@@ -52,11 +52,6 @@ message HTTPResponse {
   bool continue = 4;  // If true, continue to next plugin/handler; if false, short-circuit
 }
 
-// Ready status response.
-message ReadyResponse {
-  bool ready = 1;
-}
-
 // TelemetryConfig provides OpenTelemetry configuration.
 message TelemetryConfig {
   string otlp_endpoint = 1;
@@ -82,9 +77,9 @@ service Plugin {
   rpc GetCapabilities(google.protobuf.Empty) returns (Capabilities);
 
   // Health / readiness
-  // Returns error via gRPC status if unhealthy
-  rpc Health(google.protobuf.Empty) returns (google.protobuf.Empty);
-  rpc Ready(google.protobuf.Empty) returns (ReadyResponse);
+  // Returns error via gRPC status if unhealthy or not ready.
+  rpc CheckHealth(google.protobuf.Empty) returns (google.protobuf.Empty);
+  rpc CheckReady(google.protobuf.Empty) returns (google.protobuf.Empty);
 
   // Request / response handling
   rpc HandleRequest(HTTPRequest) returns (HTTPResponse);
