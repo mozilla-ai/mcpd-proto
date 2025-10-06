@@ -50,6 +50,10 @@ message HTTPResponse {
   map<string, string> headers = 2;
   bytes body = 3;
   bool continue = 4;  // If true, continue to next plugin/handler; if false, short-circuit
+
+  // Optional modified request for plugins that want to transform the incoming request.
+  // When set, contains the modified version of the request that was processed.
+  HTTPRequest modified_request = 5;
 }
 
 // TelemetryConfig provides OpenTelemetry configuration.
