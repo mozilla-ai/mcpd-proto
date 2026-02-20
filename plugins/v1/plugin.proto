@@ -4,7 +4,7 @@ package mozilla.mcpd.plugins.v1;
 
 // Go Option: This option tells the Go compiler where to find the generated code.
 // This is what plugin developers writing in Go will reference.
-option go_package = "github.com/mozilla-ai/mcpd-plugins-sdk-go/pkg/plugins/v1;v1";
+option go_package = "github.com/mozilla-ai/mcpd-plugins-sdk-go/pkg/plugins/v1;mcpdpluginsv1";
 
 // C# Option: Defines the namespace for the generated classes.
 // This is the namespace developers using the C# plugin SDK will reference.
